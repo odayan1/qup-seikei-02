@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>政経2 市場のしくみ｜Q-UP塾 公共・政経</title>
+<title>経済2 市場のしくみ｜Q-UP塾 公共・政経</title>
 <meta name="theme-color" content="#0e6f78">
-<meta name="description" content="共通テスト「公共，政治・経済」政経2。需要・供給のグラフと市場の失敗を、動画と同じ順番で復習＋共通テスト形式の問題。">
+<meta name="description" content="共通テスト「公共，政治・経済」経済2。需要・供給のグラフと市場の失敗を、動画と同じ順番で復習＋共通テスト形式の問題。">
 <style>
 :root{--main:#0e6f78;--main2:#17939e;--soft:#e6f5f5;--acc:#ff6b57;--acc2:#ffe0db;--ink:#22303c;--bg:#f5f9f9;--ok:#1f9d55;--ng:#d64545;--gold:#d4a017;--small:#2f7fd1;--big:#e0782f;--ky:#4b3fa3;--kysoft:#efedfb}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -184,9 +184,9 @@ const top0 = () => window.scrollTo(0, 0);
 function screen(html) { if (cleanup) { cleanup(); cleanup = null; } closeModal(); app.innerHTML = html; top0(); }
 </script>
 <script>
-/* ===== 政経2 市場のしくみ（動画 https://youtu.be/q3Eg6LONa0Q と同じ順番・同じ言葉） ===== */
+/* ===== 経済2（旧政経2） 市場のしくみ（動画 https://youtu.be/q1VDVGjLiLQ と同じ順番・同じ言葉） ===== */
 /* 各場面の開始秒（動画の目次と同じ） */
-const T2 = [0, 23, 49, 81, 116, 146, 168, 199, 239, 277, 315, 348, 391, 430, 469, 497];
+const T2 = [0, 26, 52, 84, 119, 149, 171, 202, 242, 279, 318, 351, 394, 433, 472, 500];
 
 /* --- 需要・供給グラフ（SVG）：数量Q 0〜10、価格P 0〜10 ---
    需要 D: P = 8.6 − 0.8Q + d　／　供給 S: P = 1.4 + 0.8Q − s（d・s が＋で右へ）
@@ -522,19 +522,21 @@ const U2_KY = {
 };
 
 const UNIT = {
-  no: 2, key: "qups02_", title: "市場のしくみ", titleHtml: "市場の<span>しくみ</span>",
+  no: 2, label: "経済2", key: "qups02_", title: "市場のしくみ", titleHtml: "市場の<span>しくみ</span>",
   sub: "共通テスト「公共，政治・経済」｜需要と供給のグラフは「どっちに動くか」だけ見ればいい",
-  video: "https://youtu.be/q3Eg6LONa0Q", videoLen: "9分17秒",
+  video: "https://youtu.be/q1VDVGjLiLQ", videoLen: "9分21秒",
   chapters: U2_CH, traps: U2_TRAPS, kyotsu: U2_KY,
   lab: { icon: "🧪", title: "需要と供給を動かそう", sub: "曲線を自由に動かす＋「どっちが動く？」ゲーム",
     modes: [{ label: "自由に動かす", run: u2Free }, { label: "どっちが動く？ゲーム", game: U2_GAME }] },
-  next: { title: "政経3　国会・内閣・裁判所と地方自治", text: "三権分立を1枚の図で整理して、衆議院の優越・議院内閣制・直接請求をおさえよう。<br><a href=\"https://youtu.be/qZGB1dFyTE0\" target=\"_blank\" rel=\"noopener\">▶ 動画を見る</a>" }
+  next: { title: "経済3　国民所得・金融・財政", text: "GDPと景気の動き、日本銀行の金融政策、財政と税のしくみを整理しよう。計算も出るけど、途中式を1行ずつ見ていくから大丈夫（動画準備中）。" }
 };
 
 </script>
 <script>
 /* ===== 単元データの読み込み ===== */
 VIDEO = UNIT.video; KEY = UNIT.key;
+/* 2026-10-24 番号を分野ごとに（経済N／政治N／国際N／公共N）。UNIT.label が無い古い単元は「政経N」 */
+const LABEL = UNIT.label || ("政経" + UNIT.no);
 const CH = UNIT.chapters, TRAPS = UNIT.traps, KY = UNIT.kyotsu;
 CH.forEach((c, i) => c.qs.forEach(q => q.sec = c.id));
 TRAPS.forEach(q => q.sec = "trap");
@@ -588,7 +590,7 @@ function askHome() {
 function intro() {
   screen(`<div class="card pop">
     <img class="intro-logo" src="${IMG.logo}" alt="Q-UP塾 公共・政経">
-    <h1 style="margin-top:14px;text-align:center">政経${UNIT.no}　${UNIT.title}</h1>
+    <h1 style="margin-top:14px;text-align:center">${LABEL}　${UNIT.title}</h1>
     <div class="muted" style="text-align:center">${UNIT.sub}</div>
     ${bubble("hi", `まつりです！このアプリは<b>動画とセット</b>で使ってね。動画を見たら、すぐここで解こう。`)}
     <ul class="howto">
@@ -607,7 +609,7 @@ function home() {
   const d = done();
   const nq = CH.reduce((s, c) => s + c.qs.length, 0);
   screen(`<div class="card pop">
-    <h1>政経${UNIT.no}　${UNIT.title}</h1>
+    <h1>${LABEL}　${UNIT.title}</h1>
     <div class="muted">${UNIT.sub}</div>
     <a class="vcard" href="${VIDEO}" target="_blank" rel="noopener"><img src="${IMG["pose-hi"]}" alt="まつり先生"><span><b>▶ 動画を見る</b><small>YouTube・${UNIT.videoLen}　まずは動画から！</small></span></a></div>
   <div class="sec">STEP 1　動画の復習（動画と同じ順番）</div>
@@ -824,7 +826,7 @@ function confetti() {
 }
 
 $("#hlogo").src = IMG["logo-dark"]; $("#hlogo").onclick = home;
-$("#ht1").textContent = "政経" + UNIT.no; $("#ht2").innerHTML = UNIT.titleHtml || UNIT.title;
+$("#ht1").textContent = LABEL; $("#ht2").innerHTML = UNIT.titleHtml || UNIT.title;
 $("#pt").textContent = pts + " pt";
 intro();
 </script>
